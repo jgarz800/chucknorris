@@ -1,28 +1,13 @@
 <script setup>
-import {ref} from "vue";
-import { useAdvice } from "../composables/useAdvice";
+import { useAPI } from "../composables/useAPI";
 
-const { advices, search } = useAdvice();
-
-const searchItem = ref("");
+const {chuck, getJokes} = useAPI();
 </script>
 
 <template>
-    <div>
-        <input v-model="searchItem"
-         @change="search(searchItem)"
-         type="text"
-         placeholder="Search an Advice..." 
-         class="w-full py-4 mt-16 text-xl text-center rounded-full">
-    <div class="grid grid-cols-2 gap-16 pt-16">
-        
-    <div v-for="(advice, index) in advices" :key="index">
-        <p>
-            {{ advice.advice }}
-        </p>
-        
-            </div>
-        </div>
-    </div>
-
+<div class="pb-5 text-center">
+<button @click="getJokes" class="px-4 py-6 mt-8 text-center bg-green-400 rounded-lg">Click to Get Joke</button>
+</div>
+<p class="pb-2 text-4xl text-center bg-orange-400 rounded-lg"> {{chuck}} </p>
+<img src="../components/images/chuck.gif">
 </template>
